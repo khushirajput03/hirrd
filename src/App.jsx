@@ -8,6 +8,7 @@ import SavedJobs from "./pages/saved-jobs";
 import PostJob from "./pages/post-jobs";
 import MyJobs from "./pages/my-jobs";
 import "./index.css";
+import "./App.css"; 
 import { ThemeProvider } from "./components/theme-provider";
 import ProtectedRoute from "./components/protected-route";
 
