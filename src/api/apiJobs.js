@@ -13,10 +13,10 @@ async function executeWithTokenRefresh(operation, getToken) {
     // Check if it's a JWT expired error
     if (error.code === 'PGRST303' || error.message?.includes('JWT expired')) {
       console.log("🔄 Token expired, refreshing...");
-      
+
       // Refresh the token with skipCache to get a new one
       const newToken = await getToken({ template: "supabase", skipCache: true });
-      
+
       // Retry the operation with the new token
       return await operation(newToken);
     }
@@ -250,15 +250,15 @@ export async function getSavedJobs(getToken, user_id) {
       console.error("❌ Error fetching saved jobs:", error);
       throw new Error(error.message || "Failed to fetch saved jobs");
     }
-    
+
     // Extract the job objects from the response and add saved status
-    const jobs = data 
+    const jobs = data
       ? data.map(item => ({
-          ...item.job,
-          saved: item.job.saved || [] // Ensure saved array exists
-        }))
+        ...item.job,
+        saved: item.job.saved || [] // Ensure saved array exists
+      }))
       : [];
-    
+
     return jobs;
   };
 

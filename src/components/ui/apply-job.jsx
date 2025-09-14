@@ -146,13 +146,13 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
 
   // Watch form values to debug missing fields
   const formValues = watch();
-  
+
   // Check if all required data is available
   useEffect(() => {
     const hasUser = !!user;
     const hasUserId = !!userId;
     const hasJobId = !!job?.id;
-    
+
     console.log("Form readiness check:", {
       hasUser,
       hasUserId,
@@ -161,7 +161,7 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
       userId,
       job
     });
-    
+
     if ((user?.id || userId) && job?.id) {
       setFormReady(true);
     } else {
@@ -173,7 +173,7 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
     try {
       // Get the candidate ID - try multiple possible sources
       const candidateId = user?.id || userId;
-      
+
       // Validate all required data is present
       if (!candidateId || !job?.id || !data.resume || !data.resume[0]) {
         console.error("Missing required data in onSubmit:", {
@@ -190,7 +190,7 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
 
       // Get the file from the form data
       const resumeFile = data.resume[0];
-      
+
       // Prepare the data to send to applyToJob
       const jobApplicationData = {
         ...data,
@@ -209,16 +209,16 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
       // FIXED: Get token and call applyToJob directly instead of using fnApply
       const token = await getToken({ template: "supabase" });
       await applyToJob(token, jobApplicationData);
-      
+
       // Close the drawer
       setIsDrawerOpen(false);
-      
+
       // Reset the form
       reset();
-      
+
       // Refresh the job data to update the applied status
       if (fetchJob) fetchJob();
-      
+
       // Show success message
       toast.success("Application submitted successfully!");
     } catch (error) {
@@ -286,8 +286,8 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                 control={control}
                 defaultValue="" // FIX: Add default value for controlled component
                 render={({ field }) => (
-                  <RadioGroup 
-                    onValueChange={field.onChange} 
+                  <RadioGroup
+                    onValueChange={field.onChange}
                     value={field.value}
                   >
                     <div className="flex items-center space-x-2">
@@ -328,17 +328,17 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
             {errorApply?.message && (
               <p className="text-red-500 text-sm mt-1">{errorApply?.message}</p>
             )}
-            
+
             {loadingApply && (
               <div className="flex justify-center">
                 <BarLoader width={"100%"} color="#36d7b7" />
               </div>
             )}
 
-            <Button 
-              type="submit" 
-              variant="blue" 
-              size="lg" 
+            <Button
+              type="submit"
+              variant="blue"
+              size="lg"
               className="w-full"
               disabled={loadingApply || !formReady}
             >

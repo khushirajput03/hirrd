@@ -4,12 +4,11 @@ import Onboarding from "./pages/onboarding";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import JobListing from "./pages/job-listing";
-import JobPage from "./pages/job";   // ✅ Correct import for single job page
-import SavedJobs from "./pages/saved-jobs";
+import JobPage from "./pages/job";
+import SavedJobs from "./pages/saved-jobs"; 
 import PostJob from "./pages/post-jobs";
 import MyJobs from "./pages/my-jobs";
 import "./index.css";
-import "./app.css";
 
 import { ThemeProvider } from "./components/theme-provider";
 import ProtectedRoute from "./components/protected-route";
@@ -39,7 +38,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/job/:id",  
+        path: "/job/:id",
         element: (
           <ProtectedRoute>
             <JobPage />

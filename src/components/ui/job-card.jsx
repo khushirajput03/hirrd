@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { ClipLoader } from "react-spinners"; // ✅ better loader for buttons
 import { toast } from "react-hot-toast";
 
-const JobCard = ({ job, onJobAction = () => {}, isMyJob = false }) => {
+const JobCard = ({ job, onJobAction = () => { }, isMyJob = false }) => {
   const [saved, setSaved] = useState(false);
   const [loadingSave, setLoadingSave] = useState(false);
   const [loadingDelete, setLoadingDelete] = useState(false);
@@ -142,11 +142,10 @@ const JobCard = ({ job, onJobAction = () => {}, isMyJob = false }) => {
         {/* Status */}
         {job.isOpen !== undefined && (
           <div
-            className={`text-xs font-medium px-2 py-1 rounded-full self-start ${
-              job.isOpen
+            className={`text-xs font-medium px-2 py-1 rounded-full self-start ${job.isOpen
                 ? "bg-green-100 text-green-800"
                 : "bg-red-100 text-red-800"
-            }`}
+              }`}
           >
             {job.isOpen ? "Open" : "Closed"}
           </div>

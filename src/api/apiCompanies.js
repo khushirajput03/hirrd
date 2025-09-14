@@ -13,10 +13,10 @@ async function executeWithTokenRefresh(operation, getToken) {
     // Check if it's a JWT expired error
     if (error.code === 'PGRST303' || error.message?.includes('JWT expired')) {
       console.log("🔄 Token expired, refreshing...");
-      
+
       // Refresh the token with skipCache to get a new one
       const newToken = await getToken({ template: "supabase", skipCache: true });
-      
+
       // Retry the operation with the new token
       return await operation(newToken);
     }

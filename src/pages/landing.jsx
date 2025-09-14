@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import companies from "@/data/companies.json";import {
+import companies from "@/data/companies.json"; import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -14,33 +14,33 @@ import faqs from "../data/faq.json";
 
 
 const LandingPage = () => {
-    return <div>
-        <main className="flex flex-col gap-10 sm:gap-20 py-10 sm:py-20">
-            <section className="text-center">
-                <h1 className="flex flex-col text-gray-200 items-center justify-center  text-4xl font-extrabold sm:text-6xl lg:text-8xl tracking-tighter py-4">Find Your Dream Job 
-                    <span className="flex items-center gap-2 sm:gap-6">and get
-                     <img src="./logo.png" 
-                     alt="hirrd Logo" 
-                     className="h-14 sm:h-24 lg:h-32">
-                        </img>
-                        </span>
-                        </h1>
+  return <div>
+    <main className="flex flex-col gap-10 sm:gap-20 py-10 sm:py-20">
+      <section className="text-center">
+        <h1 className="flex flex-col text-gray-200 items-center justify-center  text-4xl font-extrabold sm:text-6xl lg:text-8xl tracking-tighter py-4">Find Your Dream Job
+          <span className="flex items-center gap-2 sm:gap-6">and get
+            <img src="./logo.png"
+              alt="hirrd Logo"
+              className="h-14 sm:h-24 lg:h-32">
+            </img>
+          </span>
+        </h1>
         <p className="text-gray-300 sm:mt-4 text-xs sm:text-xl">Explore thousands of job listings or find the perfect candidate</p>
-            </section>
-            <div className="flex gap-6 justify-center">
-                {/* buttons */}
-               <Link to="/jobs">
-               <Button variant="blue" size="xl">Find Jobs</Button>
-               </Link   >
-            <Link to="/post-job">
-               <Button size="xl" variant="destructive">Post a Job</Button>
-               </Link>
+      </section>
+      <div className="flex gap-6 justify-center">
+        {/* buttons */}
+        <Link to="/jobs">
+          <Button variant="blue" size="xl">Find Jobs</Button>
+        </Link   >
+        <Link to="/post-job">
+          <Button size="xl" variant="destructive">Post a Job</Button>
+        </Link>
 
-            </div>
+      </div>
 
-             {/* carousel */}
+      {/* carousel */}
 
-                <Carousel
+      <Carousel
         plugins={[
           Autoplay({
             delay: 2000,
@@ -62,12 +62,12 @@ const LandingPage = () => {
       </Carousel>
 
 
-            {/* banner */}
+      {/* banner */}
 
-            <img src="/banner.jpeg" className="w-full px-20"/>
+      <img src="/banner.jpeg" className="w-full px-20" />
 
-            {/* cards */}
-            <section className="grid grid-cols-1 md:grid-cols-2 gap-4 px-20">
+      {/* cards */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 px-20">
         <Card>
           <CardHeader>
             <CardTitle className="font-bold">For Job Seekers</CardTitle>
@@ -87,9 +87,9 @@ const LandingPage = () => {
       </section>
 
 
-            {/* Accordian */}
+      {/* Accordian */}
 
-               <Accordion type="multiple" className="w-full px-20">
+      <Accordion type="multiple" className="w-full px-20">
         {faqs.map((faq, index) => (
           <AccordionItem key={index} value={`item-${index + 1}`}>
             <AccordionTrigger>{faq.question}</AccordionTrigger>
@@ -97,8 +97,8 @@ const LandingPage = () => {
           </AccordionItem>
         ))}
       </Accordion>
-        </main>
-    </div>
+    </main>
+  </div>
 }
 
 export default LandingPage;
