@@ -2,14 +2,12 @@ import AppLayout from "./layout/app-layout";
 import LandingPage from "./pages/landing";
 import Onboarding from "./pages/onboarding";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
 import JobListing from "./pages/job-listing";
 import JobPage from "./pages/job";
 import SavedJobs from "./pages/saved-jobs"; 
 import PostJob from "./pages/post-jobs";
 import MyJobs from "./pages/my-jobs";
 import "./index.css";
-
 import { ThemeProvider } from "./components/theme-provider";
 import ProtectedRoute from "./components/protected-route";
 
